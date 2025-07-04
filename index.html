@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head><title>JavaScript Tasks</title></head>
+<body>
+
+<h3>1. Filter Out Negative Numbers</h3>
+<input id="input1" placeholder="e.g. 1,-2,3">
+<button onclick="filterNegatives()">Filter</button>
+<p id="output1"></p>
+
+<h3>2. Difference From 13</h3>
+<input type="number" id="input2" placeholder="Enter a number">
+<button onclick="differenceFrom13()">Calculate</button>
+<p id="output2"></p>
+
+<h3>3. Fibonacci Series</h3>
+<input type="number" id="input3" placeholder="Number of terms">
+<button onclick="generateFibonacci()">Generate</button>
+<p id="output3"></p>
+
+<h3>4. Sum of Multiples of 3 or 5</h3>
+<input type="number" id="input4" placeholder="Enter max number">
+<button onclick="sumMultiples()">Sum</button>
+<p id="output4"></p>
+
+<h3>5. Cube of a Number</h3>
+<input type="number" id="input5" placeholder="Enter a number">
+<button onclick="cubeNumber()">Cube</button>
+<p id="output5"></p>
+
+<script>
+  function filterNegatives() {
+    let nums = document.getElementById("input1").value.split(",").map(Number);
+    let result = nums.filter(n => n >= 0);
+    document.getElementById("output1").textContent = "Filtered: " + result.join(", ");
+  }
+
+  function differenceFrom13() {
+    let num = Number(document.getElementById("input2").value);
+    let diff = Math.abs(num - 13);
+    let result = num > 13 ? 2 * diff : diff;
+    document.getElementById("output2").textContent = "Result: " + result;
+  }
+
+  function generateFibonacci() {
+    let count = Number(document.getElementById("input3").value);
+    let fib = [0, 1];
+    for (let i = 2; i < count; i++) {
+      fib[i] = fib[i - 1] + fib[i - 2];
+    }
+    document.getElementById("output3").textContent = "Fibonacci: " + fib.slice(0, count).join(", ");
+  }
+
+  function sumMultiples() {
+    let max = Number(document.getElementById("input4").value);
+    let sum = 0;
+    for (let i = 1; i < max; i++) {
+      if (i % 3 === 0 || i % 5 === 0) sum += i;
+    }
+    document.getElementById("output4").textContent = "Sum: " + sum;
+  }
+
+  function cubeNumber() {
+    let num = Number(document.getElementById("input5").value);
+    let cubeFunc = new Function("n", "return n * n * n;");
+    document.getElementById("output5").textContent = "Cube: " + cubeFunc(num);
+  }
+</script>
+
+</body>
+</html>
